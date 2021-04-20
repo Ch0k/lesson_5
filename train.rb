@@ -1,13 +1,12 @@
 class Train
+  @@all = []
   include Company
-  extend InstanceCounter
+  include InstanceCounter
   attr_accessor :speed
   attr_reader :number, :type
+  @@register_instance = 0
 
-  @@all = []
-  @register_instance = 0
-
-
+  
   def self.find(number)
     @@all.select {|a| a.number == number} 
   end
@@ -15,19 +14,17 @@ class Train
   def initialize(number)
     @number = number
     @@all << self
-    # self.class.instances
     @wagon = []
-    self.class.register_instance += 1
-    self.class.instances += 1
+    register_instance
   end
 
   def add_wagon(wagon)
-    @wagon << wagon
+    @wagon << wagon if wagon.type == self.type
   end
 
- # def self.all
- #   @@instances.each{|train| puts train.number}
- # end
+  def self.all
+    @@all
+  end
 
   def stop
     @speed = 0

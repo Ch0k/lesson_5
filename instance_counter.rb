@@ -1,23 +1,23 @@
 module InstanceCounter
+  def self.included(base)
+    base.extend ClassMethods
+    base.include InstanceMethods
+  end
+  
+  module ClassMethods
 
-  @@instances = 0
-
-  @register_instance = 0
-
-  def instances=(value)
-    @@instances = value
+    def instances
+      @@register_instance
+    end
   end
 
-  def instances
-    @@instances
-  end
+  module InstanceMethods
 
-  def register_instance 
-    @register_instance
-  end
+    protected
 
-  def register_instance=(value)
-    @register_instance = value
-  end
+    def register_instance 
+      @@register_instance += 1
+    end
 
+  end
 end

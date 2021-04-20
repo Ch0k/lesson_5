@@ -1,8 +1,7 @@
 class Route
-  extend InstanceCounter
+  include InstanceCounter
   @@all = []
-  @register_instance = 0
-
+  @@register_instance = 0
   # Имеет начальную и конечную станцию, а также список промежуточных станций. 
   # Начальная и конечная станции указываютсся при создании маршрута, 
   # а промежуточные могут добавляться между ними.
@@ -11,8 +10,8 @@ class Route
     @last_station = last_station
     @stations = [first_station, last_station]
     @@all << self
-    self.class.register_instance += 1
-    self.class.instances += 1
+    #self.class.register_instance += 1
+    #self.class.instances = 1
   end
 
   def self.all

@@ -1,18 +1,25 @@
 
 class Station
-  extend InstanceCounter
+  include InstanceCounter
   attr_reader :name, :trains
   @@all = []
-  @register_instance = 0
-
+  @@register_instance = 0
   # Имеет название, которое указывается при ее создании
   def initialize(name)
     @name = name
     @trains = []
     @@all << self
-    self.class.register_instance += 1
-    self.class.instances += 1
+    #self.class.instancess
+    register_instance
+    
   end
+ # def register_instance
+  #  @@register_instance += 1
+  #end
+
+  #def self.instances
+   # @@register_instance
+  #end
 
   # Может принимать поезда (по одному за раз)
   def reception(train)
