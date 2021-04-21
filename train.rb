@@ -4,9 +4,8 @@ class Train
   include InstanceCounter
   attr_accessor :speed
   attr_reader :number, :type
-  @@register_instance = 0
+  @register_instance = 0
 
-  
   def self.find(number)
     @@all.select {|a| a.number == number} 
   end

@@ -5,19 +5,18 @@ module InstanceCounter
   end
   
   module ClassMethods
-
     def instances
-      @@register_instance
+      @register_instance
+    end
+    def instances=(value)
+      @register_instance = value
     end
   end
 
   module InstanceMethods
-
-    protected
-
+    
     def register_instance 
-      @@register_instance += 1
+      self.class.instances += 1
     end
-
   end
 end
