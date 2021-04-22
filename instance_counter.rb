@@ -6,11 +6,11 @@ module InstanceCounter
   
   module ClassMethods
     def instances
-      @register_instance
+      @instances ||= 0
     end
-    def instances=(value)
-      @register_instance = value
-    end
+
+    attr_writer :instances
+    
   end
 
   module InstanceMethods

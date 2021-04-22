@@ -3,7 +3,6 @@ class Station
   include InstanceCounter
   attr_reader :name, :trains
   @@all = []
-  @register_instance = 0
   # Имеет название, которое указывается при ее создании
   def initialize(name)
     @name = name
